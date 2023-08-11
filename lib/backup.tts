@@ -1,0 +1,106 @@
+import 'package:flutter/material.dart';
+import 'about.dart';
+import 'news.dart';
+
+void main() {
+  runApp(LoginApp());
+}
+
+class LoginApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Login App',
+      home: LoginPage(),
+    );
+  }
+}
+
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final List<Map<String, String>> users = [
+    {'username': 'user1', 'password': 'password1'},
+    {'username': 'user2', 'password': 'password2'},
+    // Tambahkan data user lainnya di sini
+  ];
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  String errorMessage = '';
+
+  void _login() {
+    String username = usernameController.text;
+    String password = passwordController.text;
+
+    bool isAuthenticated = false;
+    for (var user in users) {
+      if (user['username'] == username && user['password'] == password) {
+        isAuthenticated = true;
+        break;
+      }
+    }
+
+    if (isAuthenticated) {
+      setState(() {
+        errorMessage = '';
+      });
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DashboardPage()),
+      );
+    } else {
+      setState(() {
+        errorMessage = 'Username atau password salah';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Selamat Datang Di Aplikasi UAS Semester 4'),
+        automaticallyImplyLeading: false,
+      ),
+      body: Center(
+        child: Card(
+          margin: EdgeInsets.all(16.0),
+          elevation: 4.0,
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextField(
+                  controller: usernameController,
+                  decoration: InputDecoration(labelText: 'Username'),
+                ),
+                TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(labelText: 'Password'),
+                  obscureText: true,
+                ),
+                SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: _login,
+                  child: Text('Login'),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  errorMessage,
+                  style: TextStyle(color: Colors.red),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
