@@ -62,10 +62,13 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(height: 50),
-            new Image.asset(
-              'assets/dinkes_logo.png',
-              fit: BoxFit.cover,
+            const SizedBox(height: 20),
+            Center(
+              child: new Image.asset(
+                'assets/dinkes_logo.png',
+                width: 200,
+                height: 200,
+              ),
             ),
             const SizedBox(height: 20),
             Padding(
