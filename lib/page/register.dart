@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'register.dart';
+import 'login.dart';
 import 'layout.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final List<Map<String, String>> users = [
     {'username': 'user1', 'password': '12345'},
     {'username': 'user2', 'password': 'password2'},
@@ -21,44 +21,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String errorMessage = '';
 
-  void _login() {
-    String username = usernameController.text;
-    String password = passwordController.text;
-
-    bool isAuthenticated = false;
-    for (var user in users) {
-      if (user['username'] == username && user['password'] == password) {
-        isAuthenticated = true;
-        break;
-      }
-    }
-
-    if (isAuthenticated) {
-      setState(() {
-        errorMessage = '';
-      });
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => DashboardPage()),
-      );
-    } else {
-      setState(() {
-        errorMessage = 'Username atau password salah';
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(200, 228, 178, 1),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      //   iconTheme: const IconThemeData(
-      //     color: Colors.black,
-      //   ),
-      // ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,14 +42,14 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
-              child: Center(
-                child: Text(
-                  "Selamat Datang di Aplikasi Dinkes",
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: const Text(
+                  "Daftar untuk melanjutkan!",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 30,
                     fontWeight: FontWeight.w700,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
             ),
@@ -172,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             //forgot password
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
             //login button
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -188,12 +154,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       onPressed: () {
-                        _login();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                        );
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(15.0),
                         child: Text(
-                          "Login",
+                          "Daftar",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -209,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  "Don’t have an account? ",
+                  "Have an account? ",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -223,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                   child: const Text(
-                    "Register",
+                    "Login",
                     style: TextStyle(
                       color: Colors.black87,
                       fontSize: 16,

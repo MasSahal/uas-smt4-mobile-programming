@@ -11,7 +11,7 @@ class About extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'images/dinkes_logo.png', // Pastikan Anda memiliki logo yang sesuai di folder images
+            'assets/dinkes_logo.png', // Pastikan Anda memiliki logo yang sesuai di folder images
             width: 150,
             height: 150,
           ),

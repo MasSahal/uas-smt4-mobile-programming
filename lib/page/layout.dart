@@ -51,8 +51,8 @@ class _DashboardPageState extends State<DashboardPage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: 'News',
+            icon: Icon(Icons.medical_services),
+            label: 'Layanan',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
@@ -62,23 +62,6 @@ class _DashboardPageState extends State<DashboardPage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Color.fromARGB(255, 60, 168, 98),
         onTap: _onItemTapped,
-      ),
-    );
-  }
-}
-
-class WelcomeCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(16.0),
-      elevation: 4.0,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Text(
-          'Selamat datang di Aplikasi Dashboard!',
-          style: TextStyle(fontSize: 18.0),
-        ),
       ),
     );
   }
