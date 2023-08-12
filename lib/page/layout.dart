@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'about.dart';
-import 'news.dart';
+import 'layanan.dart';
 import 'home.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -12,8 +12,8 @@ class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     Home(),
-    NewsCard(),
-    AboutCard(),
+    Layanan(),
+    About(),
   ];
 
   void _onItemTapped(int index) {
@@ -31,7 +31,7 @@ class _DashboardPageState extends State<DashboardPage> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(200, 228, 178, 1),
       appBar: AppBar(
-        title: Text('Halo, Sahal'),
+        title: Text('Dinkes App'),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(

@@ -1,17 +1,45 @@
 import 'package:flutter/material.dart';
 
-class AboutCard extends StatelessWidget {
+class About extends StatelessWidget {
+  final String appVersion = '2.12.0';
+  final String lastUpdate = '12 Agustus 2023';
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(16.0),
-      elevation: 4.0,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Text(
-          'Tentang Aplikasi Ini...',
-          style: TextStyle(fontSize: 18.0),
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'images/dinkes_logo.png', // Pastikan Anda memiliki logo yang sesuai di folder images
+            width: 150,
+            height: 150,
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Dinkes App',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Dinkes App adalah sebuah aplikasi kesehatan yang dirancang untuk memberikan informasi dan layanan kesehatan kepada masyarakat. Kami berkomitmen untuk meningkatkan kualitas hidup melalui pelayanan kesehatan yang berkualitas.',
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Versi: $appVersion',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 5),
+          Text(
+            'Tanggal Pembaruan Terakhir: $lastUpdate',
+          ),
+        ],
       ),
     );
   }
